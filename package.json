@@ -1,0 +1,68 @@
+{
+  "name": "nodecg-ticker",
+  "version": "0.1.0",
+  "description": "A customizable ticker for NodeCG",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "node scripts/bundle.js",
+    "build": "NODE_ENV=production npm run bundle"
+  },
+  "author": "",
+  "license": "MIT",
+  "nodecg": {
+    "compatibleRange": "~1.5.0",
+    "dashboardPanels": [
+      {
+        "name": "ticker",
+        "title": "Ticker",
+        "width": 4,
+        "file": "ticker/index.html"
+      },
+      {
+        "name": "ticker-add-text",
+        "title": "Add Text Ticker Item",
+        "width": 2,
+        "file": "ticker-add-text/index.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "discard",
+            "type": "dismiss"
+          },
+          {
+            "name": "add",
+            "type": "confirm"
+          }
+        ]
+      },
+      {
+        "name": "ticker-module-picker",
+        "title": "Add a Ticker Module",
+        "width": 3,
+        "file": "ticker-module-picker/index.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "cancel",
+            "type": "dismiss"
+          }
+        ]
+      }
+    ]
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.0",
+    "parcel-bundler": "^1.12.3",
+    "rimraf": "^3.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^1.3.0",
+    "@grantjbutler/vuecg": "^0.1.0",
+    "autoprefixer": "^9.6.3",
+    "tailwindcss": "^1.1.2",
+    "vue": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.4"
+  }
+}
