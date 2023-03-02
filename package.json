@@ -11,7 +11,7 @@
   "author": "",
   "license": "MIT",
   "nodecg": {
-    "compatibleRange": "~1.6.0",
+    "compatibleRange": "~1.6",
     "dashboardPanels": [
       {
         "name": "ticker",
