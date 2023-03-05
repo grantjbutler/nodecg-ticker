@@ -3,6 +3,7 @@ import { TickerModule } from './ticker-module';
 import { TickerModuleInstance } from './ticker-module-instance';
 import { TickerItem } from './ticker-item';
 import { DataType } from './data-type';
+import { TickerModuleInfo } from '@nodecg-ticker/types/schemas';
 
 export class TickerModuleRegistry<Data extends DataType> {
     constructors: Record<string, Function> = {};
@@ -39,5 +40,9 @@ export class TickerModuleRegistry<Data extends DataType> {
         }
 
         return resolver(instance);
+    }
+
+    moduleInfoForId(moduleId: string): TickerModuleInfo | undefined {
+        return tickerModuleRegistryReplicant.value.find(info => info.id === moduleId);
     }
 }

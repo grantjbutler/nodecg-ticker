@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Ticker } from '@nodecg-ticker/types/schemas';
 import { useReplicant } from '@nodecg-ticker/utils/useReplicant';
+import { onMounted } from 'vue';
 
 const ticker = useReplicant<Ticker>('ticker', { defaultValue: [] });
 
@@ -15,6 +16,25 @@ const moveUp = (itemId: string) => {
 const removeInstance = (itemId: string) => {
     nodecg.sendMessage('ticker:remove-instance', { id: itemId });
 }
+
+onMounted(() => {
+    nodecg.listenFor('ticker:add-module', () => {
+        nodecg.getDialog('ticker-module-picker')?.close()
+    })
+
+    nodecg.listenFor('ticker:show-dialog', (info: { dialogName: string, bundleName: string }) => {
+        let dialog = nodecg.getDialog(info.dialogName, info.bundleName)
+        if (!dialog) {
+            nodecg.log.error(`Couldn't find a dialog named ${info.dialogName} from the bundle ${info.bundleName}`)
+            return
+        }
+
+        // add a delay to let the other dialogs close before opening this one.
+        setTimeout(() => {
+            dialog?.open()
+        }, 500)
+    })
+});
 </script>
 
 <template>

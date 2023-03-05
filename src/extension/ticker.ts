@@ -17,6 +17,37 @@ export default class Ticker<Data extends DataType> {
     constructor() {
         this.ticker = this.buildTicker();
         this.scheduleNextTransition();
+
+        nodecg().listenFor('ticker:add-module', (moduleId: string) => {
+            let info = this.registry.moduleInfoForId(moduleId);
+            if (!info) {
+                nodecg().log.error(`No module is registered with the ID '${moduleId}'`);
+                return;
+            }
+
+            if (info.dialogName && info.bundleName) {
+                nodecg().sendMessage('ticker:show-dialog', {
+                    dialogName: info.dialogName,
+                    bundleName: info.bundleName,
+                    moduleId
+                })
+            }
+            else {
+                nodecg().sendMessage('ticker:create-instance', {
+                    moduleId
+                })
+            }
+        })
+        
+        nodecg().listenFor('ticker:create-instance', (info: { moduleId: string, data: DataType }) => {
+            let instance = this.registry.createInstance(info.moduleId, info.data);
+            if (!instance) {
+                nodecg().log.error(`No module is registered with the ID '${info. moduleId}'`);
+                return
+            }
+            
+            tickerReplicant.value.push(instance)
+        })
     }
 
     register<ModuleData extends DataType>(module: TickerModule<ModuleData>, transform: (data: TickerItem<ModuleData>) => TickerItem<Data>) {
