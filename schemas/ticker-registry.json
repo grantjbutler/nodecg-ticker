@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "$ref": "#/definitions/ticker-module-info"
+    },
+    "default": [],
+    "definitions": {
+        "ticker-module-info": {
+            "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "description": { "type": "string" },
+                "dialogName": { "type": "string" },
+                "bundleName": { "type": "string" }
+            },
+            "required": ["id", "name", "description"]
+        }
+    }
+}
