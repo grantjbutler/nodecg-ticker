@@ -1,2 +1,2 @@
 export * from './configschema';
-export * from './ticker-registry';
+export * from './ticker-module-registry';
