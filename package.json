@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "run-s clean build:*",
-    "build:browser": "vite build",
+    "build:browser": "vite build && trash graphics",
     "build:extension": "tsc -b tsconfig.extension.json && tsc-alias -p tsconfig.extension.json",
     "build:browser-api": "tsc -b tsconfig.browser-api.json",
     "clean": "trash node_modules/.cache && trash shared/dist && trash dashboard && trash graphics && trash extension",
