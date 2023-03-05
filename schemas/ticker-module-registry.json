@@ -15,7 +15,8 @@
                 "dialogName": { "type": "string" },
                 "bundleName": { "type": "string" }
             },
-            "required": ["id", "name", "description"]
+            "required": ["id", "name", "description"],
+            "additionalProperties": false
         }
     }
 }

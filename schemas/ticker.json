@@ -31,7 +31,8 @@
                 ]
             }
         },
-        "required": ["id", "moduleId", "name", "description", "data"]
+        "required": ["id", "moduleId", "name", "description", "data"],
+        "additionalProperties": false
     },
     "default": []
 }

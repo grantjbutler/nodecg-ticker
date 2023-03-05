@@ -19,5 +19,4 @@ export type Ticker = {
 		| number
 		| boolean
 		| null;
-	[k: string]: unknown;
 }[];

@@ -1,1 +1,1 @@
-export type DataType = string | number | boolean | unknown[] | object | null;
+export type DataType = string | number | boolean | unknown[] | { [k: string]: unknown } | null;
