@@ -3,12 +3,17 @@ import { TickerItem } from './ticker-item';
 import { TickerModuleInstance } from './ticker-module-instance';
 
 type TickerItemResolver<Data> = (instance: TickerModuleInstance<Data>) => TickerItem<Data>[];
+type TickerModuleInstanceCustomizer<Data> = (instance: TickerModuleInstance<Data>) => TickerModuleInstance<Data>;
 
 export class TickerModule<Data> {
     id: string;
     name: string;
     description: string;
 
+    dialogName?: string;
+    bundleName?: string;
+
+    private _onCreateInstance?: TickerModuleInstanceCustomizer<Data>;
     private _resolve: TickerItemResolver<Data>
     
     constructor (id: string, name: string, description: string) {
@@ -31,9 +36,16 @@ export class TickerModule<Data> {
             id: this.id,
             name: this.name,
             description: this.description,
-            dialogName: undefined,
-            bundleName: undefined
+            dialogName: this.dialogName,
+            bundleName: this.bundleName
         }
+    }
+
+    registerDialog (name: string, bundleName: string): TickerModule<Data> {
+        this.dialogName = name;
+        this.bundleName = bundleName;
+
+        return this;
     }
 
     onResolve(resolver: TickerItemResolver<Data>): TickerModule<Data> {
@@ -42,14 +54,26 @@ export class TickerModule<Data> {
         return this;
     }
 
+    onCreateInstance(customizer: TickerModuleInstanceCustomizer<Data>): TickerModule<Data> {
+        this._onCreateInstance = customizer;
+        
+        return this;
+    }
+
     createInstance(data?: Data): TickerModuleInstance<Data> {
-        return {
+        let instance: TickerModuleInstance<Data> = {
             id: '',
             moduleId: this.id,
             name: this.name,
             description: '',
             data
         };
+
+        if (this._onCreateInstance) {
+            instance = this._onCreateInstance(instance);
+        }
+
+        return instance;
     }
 
     resolve(instance: TickerModuleInstance<Data>): TickerItem<Data>[] {
