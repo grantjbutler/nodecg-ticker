@@ -64,6 +64,10 @@ export default class Ticker<Data extends DataType> {
     }
 
     private scheduleNextTransition() {
+        if (!this.ticker) {
+            this.ticker = this.buildTicker();
+        }
+
         if (!this.activeItems.length) {
             this.activeItems = this.resolveNextInstance();
         }
