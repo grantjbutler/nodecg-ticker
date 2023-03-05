@@ -1,4 +1,3 @@
-import { TickerModuleInfo } from '@nodecg-ticker/types/schemas';
 import { tickerModuleRegistryReplicant, tickerReplicant } from '@nodecg-ticker/util/replicants';
 import { TickerModule } from './ticker-module';
 import { TickerModuleInstance } from './ticker-module-instance';
