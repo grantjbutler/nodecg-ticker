@@ -9,7 +9,7 @@ module.exports = (nodecg: NodeCG.ServerAPI<Configschema>) => {
 
     require('./events');
 
-    const Ticker = require('./ticker');
+    const Ticker = require('./ticker').default;
 
     return {
         Ticker,
