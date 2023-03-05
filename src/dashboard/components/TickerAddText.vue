@@ -1,22 +1,25 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { createInstance } from '../../browser-api';
 
 const text = ref('');
 
-document.addEventListener('dialog-confirmed', () => {
-    if (text.value.length == 0) {
-        return;
-    }
+onMounted(() => {
+    document.addEventListener('dialog-confirmed', () => {
+        if (text.value.length == 0) {
+            return;
+        }
 
-    createInstance('com.grantjbutler.nodecg-ticker.text', { text: text.value });
+        createInstance('com.grantjbutler.nodecg-ticker.text', { text: text.value });
 
-    text.value = '';
+        text.value = '';
+    });
+
+    document.addEventListener('dialog-dismissed', () => {
+        text.value = '';
+    });
+
 });
-
-document.addEventListener('dialog-dismissed', () => {
-    text.value = '';
-})
 </script>
 
 <template>
