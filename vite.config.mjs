@@ -27,7 +27,6 @@ export default defineConfig({
     rollupOptions: {
       input: globbySync([
         './src/dashboard/*.ts',
-        './src/graphics/*.ts',
         '!**.d.ts',
       ]),
     },

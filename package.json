@@ -57,6 +57,23 @@
             "type": "dismiss"
           }
         ]
+      },
+      {
+        "name": "ticker-add-text",
+        "title": "Add Text Ticker Item",
+        "width": 2,
+        "file": "ticker-add-text.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "discard",
+            "type": "dismiss"
+          },
+          {
+            "name": "add",
+            "type": "confirm"
+          }
+        ]
       }
     ]
   }
