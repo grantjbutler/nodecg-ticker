@@ -41,6 +41,19 @@
         "title": "Ticker",
         "width": 4,
         "file": "ticker.html"
+      },
+      {
+        "name": "ticker-module-picker",
+        "title": "Add a Ticker Module",
+        "width": 3,
+        "file": "ticker-module-picker.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "cancel",
+            "type": "dismiss"
+          }
+        ]
       }
     ]
   }
