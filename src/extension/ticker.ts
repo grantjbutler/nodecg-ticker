@@ -42,7 +42,9 @@ export default class Ticker<Data extends DataType> {
             currentTickerReplicant.value = activeItem;
         }
 
-        setTimeout(this.scheduleNextTransition, nodecg().bundleConfig.interval * 1000);
+        setTimeout(() => {
+            this.scheduleNextTransition();
+        }, nodecg().bundleConfig.interval * 1000);
     }
 
     private resolveNextInstance(): TickerItem<Data>[] {
