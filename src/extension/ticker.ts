@@ -75,6 +75,8 @@ export default class Ticker<Data extends DataType> {
         let activeItem = this.activeItems.shift();
         if (activeItem) {
             currentTickerReplicant.value = activeItem;
+        } else {
+            currentTickerReplicant.value = null;
         }
 
         setTimeout(() => {
