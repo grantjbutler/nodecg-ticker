@@ -7,6 +7,6 @@ export const textModule = new TickerModule<{ text: string }>(
 )
 .onCreateInstance(instance => {
     instance.name = "Text";
-    instance.description = instance.data?.text || "";
+    instance.description = instance.data.text;
     return instance;
 });

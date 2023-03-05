@@ -10,13 +10,14 @@ export type Ticker = {
 	moduleId: string;
 	name: string;
 	description: string;
-	data?:
+	data:
 		| {
 				[k: string]: unknown;
 		  }
 		| unknown[]
 		| string
 		| number
-		| boolean;
+		| boolean
+		| null;
 	[k: string]: unknown;
 }[];

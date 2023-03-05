@@ -24,11 +24,14 @@
                     },
                     {
                         "type": "boolean"
+                    },
+                    {
+                        "type": "null"
                     }
                 ]
             }
         },
-        "required": ["id", "moduleId", "name", "description"]
+        "required": ["id", "moduleId", "name", "description", "data"]
     },
     "default": []
 }

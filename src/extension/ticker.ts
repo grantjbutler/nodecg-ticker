@@ -19,7 +19,7 @@ export class Ticker<Data extends DataType> {
         this.scheduleNextTransition();
     }
 
-    register<ModuleData>(module: TickerModule<ModuleData>, transform: (data: TickerItem<ModuleData>) => TickerItem<Data>) {
+    register<ModuleData extends DataType>(module: TickerModule<ModuleData>, transform: (data: TickerItem<ModuleData>) => TickerItem<Data>) {
         this.registry.register(module, transform);
     }
 

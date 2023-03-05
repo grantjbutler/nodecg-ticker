@@ -2,11 +2,12 @@ import { TickerModuleInfo } from '@nodecg-ticker/types/schemas';
 import { TickerItem } from './ticker-item';
 import { TickerModuleInstance } from './ticker-module-instance';
 import { v4 as uuid } from 'uuid';
+import { DataType } from './data-type';
 
 type TickerItemResolver<Data> = (instance: TickerModuleInstance<Data>) => TickerItem<Data>[];
 type TickerModuleInstanceCustomizer<Data> = (instance: TickerModuleInstance<Data>) => TickerModuleInstance<Data>;
 
-export class TickerModule<Data> {
+export class TickerModule<Data extends DataType> {
     id: string;
     name: string;
     description: string;
@@ -61,7 +62,7 @@ export class TickerModule<Data> {
         return this;
     }
 
-    createInstance(data?: Data): TickerModuleInstance<Data> {
+    createInstance(data: Data): TickerModuleInstance<Data> {
         let instance: TickerModuleInstance<Data> = {
             id: uuid(),
             moduleId: this.id,

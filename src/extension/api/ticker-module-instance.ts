@@ -3,5 +3,5 @@ export interface TickerModuleInstance<Data> {
     moduleId: string;
     name: string;
     description: string;
-    data?: Data;
+    data: Data;
 }
