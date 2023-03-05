@@ -8,7 +8,7 @@ import { TickerModuleInstance } from "./api/ticker-module-instance";
 import { get as nodecg } from '@nodecg-ticker/util/nodecg';
 import { DataType } from "./api/data-type";
 
-export class Ticker<Data extends DataType> {
+export default class Ticker<Data extends DataType> {
     private registry: TickerModuleRegistry<Data> = new TickerModuleRegistry();
 
     private ticker?: RunningTicker;
