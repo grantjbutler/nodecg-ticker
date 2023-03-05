@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "lib": ["ESNext", "DOM"],
+      "jsx": "preserve",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "baseUrl": ".",
+      "resolveJsonModule": true,
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "outDir": "browser-api",
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "skipLibCheck": true,
+    },
+    "include": [
+      "src/browser-api/**/*.ts",
+      "node_modules/@alvancamp/test-nodecg-types/augment-window.d.ts"
+    ]
+}

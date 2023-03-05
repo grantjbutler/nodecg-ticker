@@ -25,3 +25,5 @@ dist-ssr
 
 /dashboard/
 /extension/
+/graphics/
+/browser-api/
