@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+      "target": "es2016",
+      "module": "commonjs",
+      "rootDir": "src/extension",
+      "moduleResolution": "Node",
+      "baseUrl": ".",
+      "paths": {
+        "@nodecg-ticker/*": [
+          "src/extension/*"
+        ],
+        "@nodecg-ticker/types": [
+          "src/types"
+        ],
+        "@nodecg-ticker/types/*": [
+          "src/types/*"
+        ]
+      },
+      "outDir": "extension",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "skipLibCheck": true,
+    },
+    "include": [
+      "src/extension/**/*.ts",
+      "src/types/**/*.d.ts",
+      "node_modules/@alvancamp/test-nodecg-types/index.d.ts"
+    ],
+  }    
