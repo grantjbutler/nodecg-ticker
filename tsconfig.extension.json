@@ -9,6 +9,9 @@
         "@nodecg-ticker/*": [
           "src/extension/*"
         ],
+        "@nodecg-ticker/util/*": [
+            "src/extension/util/*"
+        ],
         "@nodecg-ticker/types": [
           "src/types"
         ],
