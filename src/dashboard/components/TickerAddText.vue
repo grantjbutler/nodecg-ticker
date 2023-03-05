@@ -25,6 +25,6 @@ onMounted(() => {
 <template>
     <div>
         <label for="text">Ticker Text</label>
-        <input type="text" id="text" v-model.trim="text">
+        <input type="text" id="text" v-model.trim="text" class="text-black w-full p-1">
     </div>
 </template>
