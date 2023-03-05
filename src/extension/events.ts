@@ -1,7 +1,7 @@
 import { get as nodecg } from '@nodecg-ticker/util/nodecg';
 import { tickerReplicant } from './util/replicants';
 
-nodecg().listenFor('ticker:delete-instance', (args: { id: string }) => {
+nodecg().listenFor('ticker:remove-instance', (args: { id: string }) => {
     tickerReplicant.value = tickerReplicant.value.filter(instance => instance.id != args.id);
 });
 
