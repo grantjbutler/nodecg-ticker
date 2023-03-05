@@ -8,6 +8,9 @@
       "moduleResolution": "Node",
       "baseUrl": ".",
       "paths": {
+        "@nodecg-ticker/*": [
+          "src/dashboard/*"
+        ],
         "@nodecg-ticker/types": [
           "src/types"
         ],
@@ -25,8 +28,6 @@
     "include": [
       "src/dashboard/**/*.ts",
       "src/dashboard/**/*.vue",
-      "src/graphics/**/*.ts",
-      "src/graphics/**/*.vue",
       "src/types/**/*.d.ts",
       "node_modules/@alvancamp/test-nodecg-types/augment-window.d.ts"
     ],

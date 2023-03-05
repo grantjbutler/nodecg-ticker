@@ -32,5 +32,16 @@
     "vite-plugin-checker": "^0.5.6",
     "vite-plugin-nodecg": "^2.0.0-rc2",
     "vue-tsc": "^1.0.24"
+  },
+  "nodecg": {
+    "compatibleRange": "^1.9",
+    "dashboardPanels": [
+      {
+        "name": "ticker",
+        "title": "Ticker",
+        "width": 4,
+        "file": "ticker.html"
+      }
+    ]
   }
 }

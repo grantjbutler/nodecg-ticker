@@ -20,7 +20,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@nodecg-ticker': path.resolve(__dirname, 'src')
+      '@nodecg-ticker': path.resolve(__dirname, 'src', 'dashboard')
     }
   },
   build: {
