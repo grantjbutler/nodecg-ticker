@@ -2,7 +2,6 @@ import NodeCG from "@alvancamp/test-nodecg-types"
 import { set } from '@nodecg-ticker/util/nodecg';
 import { Configschema } from "@nodecg-ticker/types/schemas";
 import { TickerModule } from "./api/ticker-module";
-import { textModule } from "./modules/text";
 
 module.exports = (nodecg: NodeCG.ServerAPI<Configschema>) => {
     set(nodecg);
@@ -10,6 +9,7 @@ module.exports = (nodecg: NodeCG.ServerAPI<Configschema>) => {
     require('./events');
 
     const Ticker = require('./ticker').default;
+    const { textModule } = require("./modules/text");
 
     return {
         Ticker,
