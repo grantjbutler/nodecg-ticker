@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,5 +8,12 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    plugin(function({addVariant}) {
+      addVariant('no-hover', '@media (hover: none)');
+
+      addVariant('pointer-coarse', '@media (pointer: coarse')
+      addVariant('pointer-fine', '@media (pointer: fine)')
+    })
+  ],
 }
