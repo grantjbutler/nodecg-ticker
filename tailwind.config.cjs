@@ -12,7 +12,7 @@ module.exports = {
     plugin(function({addVariant}) {
       addVariant('no-hover', '@media (hover: none)');
 
-      addVariant('pointer-coarse', '@media (pointer: coarse')
+      addVariant('pointer-coarse', '@media (pointer: coarse)')
       addVariant('pointer-fine', '@media (pointer: fine)')
     })
   ],
