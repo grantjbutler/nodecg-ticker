@@ -13,10 +13,16 @@ export default class Ticker<Data extends DataType> {
 
     private ticker?: RunningTicker;
     private activeItems: TickerItem<Data>[] = [];
+    private isRunning = false;
 
     constructor() {
-        this.ticker = this.buildTicker();
-        this.scheduleNextTransition();
+        tickerReplicant.on('change', (newValue) => {
+            if (!newValue.length) {
+                this.stop();
+            } else {
+                this.start();
+            }
+        })
 
         nodecg().listenFor('ticker:add-module', (moduleId: string) => {
             let info = this.registry.moduleInfoForId(moduleId);
@@ -55,6 +61,15 @@ export default class Ticker<Data extends DataType> {
         this.registry.register(module, transform);
     }
 
+    private stop() {
+        this.isRunning = false;
+    }
+
+    private start() {
+        this.isRunning = true;
+        this.scheduleNextTransition();
+    }
+
     private buildTicker() {
         let ticker = clone(tickerReplicant.value);
         if (ticker.length == 0) {
@@ -65,6 +80,12 @@ export default class Ticker<Data extends DataType> {
     }
 
     private scheduleNextTransition() {
+        if (!this.isRunning) {
+            currentTickerReplicant.value = null;
+            
+            return;
+        }
+
         if (!this.ticker) {
             this.ticker = this.buildTicker();
         }
