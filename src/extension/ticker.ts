@@ -19,9 +19,9 @@ export default class Ticker<Data extends DataType> {
         // nodecg().on('started', () => {
         setTimeout(() => {
             tickerReplicant.on('change', (newValue) => {
-                if (!newValue.length) {
+                if (!newValue.length && this.isRunning) {
                     this.stop();
-                } else {
+                } else if (newValue.length && !this.isRunning) {
                     this.start();
                 }
             })
@@ -66,10 +66,14 @@ export default class Ticker<Data extends DataType> {
     }
 
     private stop() {
+        if (!this.isRunning) { return; }
+
         this.isRunning = false;
     }
 
     private start() {
+        if (this.isRunning) { return; }
+
         this.isRunning = true;
         this.scheduleNextTransition();
     }
