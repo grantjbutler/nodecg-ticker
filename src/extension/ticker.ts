@@ -67,10 +67,26 @@ export default class Ticker<Data extends DataType> {
     private scheduleNextTransition() {
         if (!this.ticker) {
             this.ticker = this.buildTicker();
+
+            if (!this.ticker) {
+                currentTickerReplicant.value = null;
+
+                setTimeout(() => {
+                    this.scheduleNextTransition();
+                }, nodecg().bundleConfig.interval * 1000);
+    
+                return;
+            }
         }
 
         if (!this.activeItems.length) {
             this.activeItems = this.resolveNextInstance();
+
+            if (!this.activeItems.length) {
+                this.scheduleNextTransition();
+
+                return;
+            }
         }
 
         let activeItem = this.activeItems.shift();
