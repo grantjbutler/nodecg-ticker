@@ -34,7 +34,8 @@ export default class Ticker<Data extends DataType> {
             }
             else {
                 nodecg().sendMessage('ticker:create-instance', {
-                    moduleId
+                    moduleId,
+                    data: null
                 })
             }
         })
