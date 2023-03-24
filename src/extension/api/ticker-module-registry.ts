@@ -36,6 +36,7 @@ export class TickerModuleRegistry<Data extends DataType> {
     resolve<ModuleData extends DataType>(instance: TickerModuleInstance<ModuleData>): TickerItem<Data>[] | undefined {
         let resolver = this.resolvers[instance.moduleId];
         if (!resolver) {
+            console.log('no resolver');
             return undefined;
         }
 

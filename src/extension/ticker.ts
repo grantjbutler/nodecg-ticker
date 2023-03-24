@@ -117,6 +117,7 @@ export default class Ticker<Data extends DataType> {
 
         let instance: TickerModuleInstance<DataType> | undefined = this.ticker.shift();
         if (!instance) {
+            console.log('no instance');
             return this.resolveNextInstance();
         }
 
