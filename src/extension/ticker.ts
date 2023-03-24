@@ -69,12 +69,9 @@ export default class Ticker<Data extends DataType> {
             this.ticker = this.buildTicker();
         }
 
-        if (!this.activeItems.length) {
-            this.activeItems = this.resolveNextInstance();
-        }
-
         let activeItem = this.activeItems.shift();
         if (!activeItem) {
+            this.activeItems = this.resolveNextInstance();
             this.scheduleNextTransition();
 
             return;
