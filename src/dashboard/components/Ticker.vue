@@ -47,7 +47,8 @@ onMounted(() => {
         <div v-if="ticker.length > 0">
             <div v-for="(item, index) in ticker" :key="item.id" class="flex items-center group" :class="{ 'bg-gray-700': index % 2 == 0, 'bg-gray-800': index % 2 == 1 }">
                 <div class="flex-1 p-2">
-                    {{ item.description }}
+                    <div v-html="item.name" class="text-sm"></div>
+                    <div v-html="item.description" class="text-md"></div>
                 </div>
                 <div class="hidden group-hover:flex no-hover:flex pointer-coarse:gap-2 pr-2">
                     <button class="w-6 h-8 text-gray-500 disabled:opacity-25" :disabled="index == ticker.length - 1" @click="moveDown(item.id)">
