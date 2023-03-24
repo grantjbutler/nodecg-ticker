@@ -16,15 +16,17 @@ export default class Ticker<Data extends DataType> {
     private isRunning = false;
 
     constructor() {
-        nodecg().on('started', () => {
+        // nodecg().on('started', () => {
+        setTimeout(() => {
             tickerReplicant.on('change', (newValue) => {
                 if (!newValue.length) {
                     this.stop();
                 } else {
                     this.start();
                 }
-            })    
-        })
+            })
+        }, 3000);
+        // })
 
         nodecg().listenFor('ticker:add-module', (moduleId: string) => {
             let info = this.registry.moduleInfoForId(moduleId);
